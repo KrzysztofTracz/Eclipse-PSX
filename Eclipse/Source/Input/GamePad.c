@@ -132,3 +132,59 @@ ButtonState GamePadGetButtonState(GamePad* gamePad, GamePadButton button)
         return BS_UNKNOWN;
     }
 }
+
+int GamePadCheckButtonsState(GamePad* gamePad, short buttons, ButtonState state)
+{
+    int   i;
+    int   result;
+    short button;
+
+    char pressed      = 0;
+    char released     = 0;
+    char was_pressed  = 0;
+    char was_released = 0;
+
+    for (i = 0; i < GAME_PAD_BUTTONS_AMOUNT; i++)
+    {
+        button = 1 << i;
+        if ((buttons & button) > 0)
+        {
+            switch (GamePadGetButtonState(gamePad, button))
+            {
+            case BS_PRESSED:
+                pressed++;
+                break;
+            case BS_RELEASED:
+                released++;
+                break;
+            case BS_WAS_PRESSED:
+                was_pressed++;
+                break;
+            case BS_WAS_RELEASED:
+                was_released++;
+                break;
+            }
+        }
+    }
+
+    switch (state)
+    {
+    case BS_PRESSED:
+        result = released == 0 && was_released == 0;
+        break;
+    case BS_WAS_PRESSED:
+        result = released == 0 && was_released == 0 && was_pressed > 0;
+        break;
+    case BS_RELEASED:
+        result = pressed == 0 && was_pressed == 0;
+        break;
+    case BS_WAS_RELEASED:
+        result = pressed == 0 && was_pressed == 0 && was_released > 0;
+        break;
+    default:
+        result = 0;
+        break;
+    }
+
+    return result;
+}

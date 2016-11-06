@@ -3,6 +3,8 @@
 
 #include "Device.h"
 
+#define GAME_PAD_BUTTONS_AMOUNT 14
+
 //////////////////////////////////////////////////////////
 // Game Pad
 //////////////////////////////////////////////////////////
@@ -21,18 +23,18 @@ typedef enum GamePadButton
     GPB_UNKNOWN = 0,
     GPB_UP      = 1,
     GPB_DOWN    = 2,
-    GPB_RIGHT   = 3,
-    GPB_LEFT    = 4,
-    GPB_T       = 5,
-    GPB_X       = 6,
-    GPB_O       = 7,
-    GPB_S       = 8,
-    GPB_L1      = 9,
-    GPB_L2      = 10,
-    GPB_R1      = 11,
-    GPB_R2      = 12,
-    GPB_START   = 13,
-    GPB_SELECT  = 14,
+    GPB_RIGHT   = 4,
+    GPB_LEFT    = 8,
+    GPB_T       = 16,
+    GPB_X       = 32,
+    GPB_O       = 64,
+    GPB_S       = 128,
+    GPB_L1      = 256,
+    GPB_L2      = 512,
+    GPB_R1      = 1024,
+    GPB_R2      = 2048,
+    GPB_START   = 4096,
+    GPB_SELECT  = 8192,
 }
 GamePadButton;
 
@@ -68,8 +70,9 @@ void GampadPrintState(GamePad* gamePad);
 
 GamePadConnectionStatus GamePadUpdate(GamePad* gamePad, ControllerDevice* device);
 
-ButtonState GamePadGetButtonState  (GamePad* gamePad, GamePadButton button);
-int         GamePadCheckButtonState(GamePad* gamePad, GamePadButton button, ButtonState state);
+ButtonState GamePadGetButtonState   (GamePad* gamePad, GamePadButton button);
+int         GamePadCheckButtonsState(GamePad* gamePad, short buttons, ButtonState state);
+int         GamePadCheckButtonState (GamePad* gamePad, GamePadButton button, ButtonState state);
 //////////////////////////////////////////////////////////
 
 #define BUTTON_TO_BUTTON_ENUM(button) GPB_##button

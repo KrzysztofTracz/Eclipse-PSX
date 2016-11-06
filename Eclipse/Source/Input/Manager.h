@@ -19,8 +19,8 @@ void InputManagerFlushDebugStreams();
 
 GamePadConnectionStatus InputManagerUpdateGamePad(ControllerDeviceSlot slot);
 
-ButtonState P1Button(GamePadButton button);
-ButtonState P2Button(GamePadButton button);
+int P1Button(short buttons, ButtonState state);
+int P2Button(short buttons, ButtonState state);
 
 //////////////////////////////////////////////////////////
 

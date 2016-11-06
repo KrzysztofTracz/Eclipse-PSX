@@ -36,17 +36,17 @@ int main()
     LoggerInit();
     InputManagerInit();
 
-	while (1) // draw and display forever
+	while (1)
 	{        
         TimerManagerTick();
 
         InputManagerUpdateGamePad(CDS_SLOT1);
         InputManagerUpdateGamePad(CDS_SLOT2);
 		        
-        if (P1Button(GPB_SELECT) == BS_WAS_PRESSED)
+        if (P1Button(GPB_L1 | GPB_R1, BS_WAS_PRESSED) > 0)
         {
             LoggerClear();
-        }                   
+        }
 
         display();
 	}
