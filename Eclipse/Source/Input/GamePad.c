@@ -1,9 +1,12 @@
+#include "..\Logger.h"
 #include "GamePad.h"
 #include "Manager.h"
 
 #define BUTTON_PRINT_STATE(button, gamepad) FntPrint(gamepad->DebugStreamID, #button ":%s\n", BSToString(gamepad->button))
 
 #define BUTTON_PRINT_PRESSED(button, gamepad) if(gamepad->button == BS_PRESSED) FntPrint(gamepad->DebugStreamID, #button "\n")
+
+#define BUTTON_PRINT_CHANGED(button, gamepad) if(gamepad->button == BS_WAS_PRESSED || gamepad->button == BS_WAS_RELEASED) LOG(#button ": %s", BSToString(gamepad->button));
 
 #define BUTTON_UPDATE_STATE(button, gamepad, device) gamePad->button = device->State.PadController.button \
                                                                      | (GamePadCheckButtonState(gamePad, BUTTON_TO_BUTTON_ENUM(button), device->State.PadController.button) == 0 ? 2 : 0)                                                                                                                                            
@@ -33,6 +36,7 @@ GamePadConnectionStatus GamePadUpdate(GamePad* gamePad, ControllerDevice* device
         gamePad->ConnectionStatus = GPCS_CONNECTED;
         
         FOR_EACH_BUTTON(UPDATE_STATE, gamePad, device);
+        FOR_EACH_BUTTON(PRINT_CHANGED, gamePad);
     }
     else
     {

@@ -4,7 +4,7 @@
 
 InputManager GInputManager;
 
-#define DEBUG_STREAM_AREA_X 5
+#define DEBUG_STREAM_AREA_X 0
 #define DEBUG_STREAM_AREA_Y 5
 #define DEBUG_STREAM_AREA_WIDTH 45
 #define DEBUG_STREAM_AREA_HEIGHT 120

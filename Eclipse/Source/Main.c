@@ -3,6 +3,7 @@
 #include <libgpu.h>
 #include <libgs.h>
 
+#include "Logger.h"
 #include "Input.h"
 
 #define OT_LENGTH 1 // the ordertable length
@@ -32,6 +33,7 @@ int main()
 	graphics(); // setup the graphics (seen below)
 	FntLoad(960, 256); // load the font from the BIOS into VRAM/SGRAM
 
+    LoggerInit();
     InputManagerInit();
 
 	while (1) // draw and display forever
@@ -71,8 +73,9 @@ void graphics()
 
 void display()
 {
+    LoggerFlush();
     InputManagerFlushDebugStreams();
-	FntFlush(-1); // refresh the font
+
 	CurrentBuffer = GsGetActiveBuff(); // get the current buffer
 	GsSetWorkBase((PACKET*)GPUPacketArea[CurrentBuffer]); // setup the packet workbase
 	GsClearOt(0, 0, &myOT[CurrentBuffer]); // clear the ordering table
