@@ -15,15 +15,30 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.c">
+    <ClCompile Include="Source\Main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Input.c">
+    <ClCompile Include="Source\Input\Device.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Input\Manager.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Input\GamePad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Input.h">
+    <ClInclude Include="Source\Input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Input\Device.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Input\Manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Input\GamePad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

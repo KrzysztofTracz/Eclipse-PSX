@@ -40,11 +40,16 @@
   <ItemDefinitionGroup>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Input.c" />
-    <ClCompile Include="Main.c" />
+    <ClCompile Include="Source\Input\Device.c" />
+    <ClCompile Include="Source\Input\GamePad.c" />
+    <ClCompile Include="Source\Input\Manager.c" />
+    <ClCompile Include="Source\Main.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Input.h" />
+    <ClInclude Include="Source\Input.h" />
+    <ClInclude Include="Source\Input\Device.h" />
+    <ClInclude Include="Source\Input\GamePad.h" />
+    <ClInclude Include="Source\Input\Manager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

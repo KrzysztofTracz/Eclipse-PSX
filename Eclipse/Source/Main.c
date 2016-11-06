@@ -19,8 +19,6 @@ u_long __stacksize = 0x00004000; // force 16 kilobytes of stack
 
 short CurrentBuffer = 0;
 
-
-
 // ----------
 // PROTOTYPES
 // ----------
@@ -33,13 +31,13 @@ int main()
 
 	graphics(); // setup the graphics (seen below)
 	FntLoad(960, 256); // load the font from the BIOS into VRAM/SGRAM
-	//SetDumpFnt(FntOpen(5, 20, 320, 240, 0, 512)); // screen X,Y | max text length X,Y | autmatic background clear 0,1 | max characters
 
-    InitInputManager();
+    InputManagerInit();
 
 	while (1) // draw and display forever
 	{        
-        PrintDeviceState(&GInputManager.Devices[0]);        
+        InputManagerUpdateGamePad(CDS_SLOT1);
+        InputManagerUpdateGamePad(CDS_SLOT2);
 		display();
 	}
 
@@ -73,7 +71,7 @@ void graphics()
 
 void display()
 {
-    FlushInputDebugStream();
+    InputManagerFlushDebugStreams();
 	FntFlush(-1); // refresh the font
 	CurrentBuffer = GsGetActiveBuff(); // get the current buffer
 	GsSetWorkBase((PACKET*)GPUPacketArea[CurrentBuffer]); // setup the packet workbase

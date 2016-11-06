@@ -1,5 +1,5 @@
-#ifndef _INPUT_H_
-#define _INPUT_H_
+#ifndef _INPUT_DEVICE_H_
+#define _INPUT_DEVICE_H_
 
 #define DEVICE_STATE_BUFFER_LENGTH 34
 #define DEVICE_STATE_HEADER 2
@@ -9,10 +9,11 @@
 //////////////////////////////////////////////////////////
 typedef enum ButtonState
 {
-    BSPressed     = 0,
-    BSReleased    = 1,
-    BSWasPressed  = 2,
-    BSWasReleased = 3
+    BS_UNKNOWN      = -1,
+    BS_PRESSED      = 0,
+    BS_RELEASED     = 1,
+    BS_WAS_PRESSED  = 2,
+    BS_WAS_RELEASED = 3,
 } 
 ButtonState;
 
@@ -41,8 +42,6 @@ typedef struct PadControllerState
     char S : 1;
 } 
 PadControllerState;
-
-void PrintPadControllerState(PadControllerState* padControllerState);
 //////////////////////////////////////////////////////////
 
 
@@ -53,7 +52,6 @@ typedef union ControllerDeviceState
 {
     PadControllerState PadController;
     char RawBuffer[DEVICE_STATE_BUFFER_LENGTH - DEVICE_STATE_HEADER];
-
 }
 ControllerDeviceState;
 //////////////////////////////////////////////////////////
@@ -62,16 +60,25 @@ ControllerDeviceState;
 //////////////////////////////////////////////////////////
 // Controller Device
 //////////////////////////////////////////////////////////
+typedef enum ControllerDeviceSlot
+{
+    CDS_UNKNOWN = -1,
+    CDS_SLOT1   = 0,
+    CDS_SLOT2   = 1
+}
+ControllerDeviceSlot;
+
 typedef enum ControllerDeviceType
 {
-    CDTMouse            = 1,
-    CDT16ButtonAnalog   = 2,
-    CDTGunController    = 3,
-    CDT16Button         = 4,
-    CDTAnalogJoystick   = 5,
-    CDTGunController2   = 6,
-    CDTAnalogController = 7,
-    CDTMultiTap         = 8
+    CDT_UNKNOWN           = -1,
+    CDT_MOUSE             = 1,
+    CDT_16BUTTON_ANALOG   = 2,
+    CDT_GUN_CONTROLLER    = 3,
+    CDT_16BUTTON          = 4,
+    CDT_ANALOG_JOYSTICK   = 5,
+    CDT_GUN_CONTROLLER2   = 6,
+    CDT_ANALOG_CONTROLLER = 7,
+    CDT_MULTITAP          = 8
 } 
 ControllerDeviceType;
 
@@ -81,32 +88,14 @@ typedef struct ControllerDevice
 {
     char Result;
     char BytesReceived : 4;
-    ControllerDeviceType Type : 4;
-    
+    char Type          : 4;
+ 
     ControllerDeviceState State;
     
     char Slot : 1;
 }
 ControllerDevice;
 
-void PrintDeviceState(ControllerDevice* device);
 //////////////////////////////////////////////////////////
 
-
-//////////////////////////////////////////////////////////
-// Input Manager
-//////////////////////////////////////////////////////////
-typedef struct InputManager
-{
-    int DebugStreamID;
-    ControllerDevice Devices[2];
-} 
-InputManager;
-
-void InitInputManager();
-void FlushInputDebugStream();
-//////////////////////////////////////////////////////////
-
-extern InputManager GInputManager;
-
-#endif // !_INPUT_H_
+#endif // !_INPUT_DEVICE_H_
