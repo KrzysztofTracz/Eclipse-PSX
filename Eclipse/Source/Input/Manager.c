@@ -58,3 +58,13 @@ GamePadConnectionStatus InputManagerUpdateGamePad(ControllerDeviceSlot slot)
     return GamePadUpdate(&GInputManager.GamePads[slot], 
                          &GInputManager.Devices [slot]);
 }
+
+ButtonState P1Button(GamePadButton button)
+{
+    return GamePadGetButtonState(&GInputManager.GamePads[CDS_SLOT1], button);
+}
+
+ButtonState P2Button(GamePadButton button)
+{
+    return GamePadGetButtonState(&GInputManager.GamePads[CDS_SLOT1], button);
+}

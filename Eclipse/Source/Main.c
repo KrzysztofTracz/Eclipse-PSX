@@ -5,6 +5,7 @@
 
 #include "Logger.h"
 #include "Input.h"
+#include "Timer.h"
 
 #define OT_LENGTH 1 // the ordertable length
 #define PACKETMAX 18 // the maximum number of objects on the screen
@@ -28,19 +29,26 @@ void display();
 
 int main()
 {
-    int i;
-
 	graphics(); // setup the graphics (seen below)
 	FntLoad(960, 256); // load the font from the BIOS into VRAM/SGRAM
 
+    TimerManagerInit();
     LoggerInit();
     InputManagerInit();
 
 	while (1) // draw and display forever
 	{        
+        TimerManagerTick();
+
         InputManagerUpdateGamePad(CDS_SLOT1);
         InputManagerUpdateGamePad(CDS_SLOT2);
-		display();
+		        
+        if (P1Button(GPB_SELECT) == BS_WAS_PRESSED)
+        {
+            LoggerClear();
+        }                   
+
+        display();
 	}
 
 	return 0;
@@ -50,6 +58,7 @@ void graphics()
 {
     // within the BIOS, if the address 0xBFC7FF52 equals 'E', 
     // set it as PAL (1). Otherwise, set it as NTSC (0)
+
     SetVideoMode(*(char *)0xbfc7ff52 == 'E' ? 1 : 0);
 
 	GsInitGraph(SCREEN_WIDTH, 

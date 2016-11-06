@@ -45,6 +45,7 @@
     <ClCompile Include="Source\Input\Manager.c" />
     <ClCompile Include="Source\Logger.c" />
     <ClCompile Include="Source\Main.c" />
+    <ClCompile Include="Source\Timer.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Input.h" />
@@ -52,6 +53,7 @@
     <ClInclude Include="Source\Input\GamePad.h" />
     <ClInclude Include="Source\Input\Manager.h" />
     <ClInclude Include="Source\Logger.h" />
+    <ClInclude Include="Source\Timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
