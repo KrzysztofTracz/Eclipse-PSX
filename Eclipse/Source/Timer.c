@@ -27,7 +27,7 @@ void TimerTick(TimerHandler timerHandler)
             {
                 if (++timer->Loop > timer->Repeat)
                 {
-                    TimerStop(timer);
+                    TimerStop(timerHandler);
                 }
             }
         }
