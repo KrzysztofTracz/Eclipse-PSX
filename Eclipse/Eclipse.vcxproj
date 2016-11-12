@@ -1,8 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Release|Win32">
-      <Configuration>Release</Configuration>
+    <ProjectConfiguration Include="NTSC-Debug|Win32">
+      <Configuration>NTSC-Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="NTSC-Release|Win32">
+      <Configuration>NTSC-Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="PAL-Debug|Win32">
+      <Configuration>PAL-Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="PAL-Release|Win32">
+      <Configuration>PAL-Release</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
@@ -13,7 +25,22 @@
     <ProjectName>Eclipse</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='NTSC-Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='NTSC-Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PAL-Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PAL-Release|Win32'" Label="Configuration">
     <ConfigurationType>Makefile</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
@@ -23,17 +50,44 @@
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='NTSC-Release|Win32'">
     <NMakeOutput>$(Configuration)\bin\ECLIPSE.exe</NMakeOutput>
-    <NMakePreprocessorDefinitions>$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakePreprocessorDefinitions>_NTSC</NMakePreprocessorDefinitions>
     <NMakeIncludeSearchPath>$(PSX_INCLUDES)</NMakeIncludeSearchPath>
-    <NMakeBuildCommandLine>%PSX_BUILDER% -b "$(MSBuildProjectFullPath)" $(Configuration) $(CrtSDKReferenceVersion)</NMakeBuildCommandLine>
-    <NMakeReBuildCommandLine>%PSX_BUILDER% -r "$(MSBuildProjectFullPath)" $(Configuration) $(CrtSDKReferenceVersion)</NMakeReBuildCommandLine>
-    <NMakeCleanCommandLine>%PSX_BUILDER% -c "$(MSBuildProjectFullPath)" $(Configuration) $(CrtSDKReferenceVersion)</NMakeCleanCommandLine>
+    <NMakeBuildCommandLine>%PSX_BUILDER% -b "$(MSBuildProjectFullPath)" "$(Configuration)" $(CrtSDKReferenceVersion)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>%PSX_BUILDER% -r "$(MSBuildProjectFullPath)" "$(Configuration)" $(CrtSDKReferenceVersion)</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>%PSX_BUILDER% -c "$(MSBuildProjectFullPath)" "$(Configuration)" $(CrtSDKReferenceVersion)</NMakeCleanCommandLine>
+    <OutDir>$(SolutionDir)$(Configuration)\bin\</OutDir>
+    <IntDir>$(SolutionDir)$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='NTSC-Debug|Win32'">
+    <NMakeOutput>$(Configuration)\bin\ECLIPSE.exe</NMakeOutput>
+    <NMakePreprocessorDefinitions>_NTSC; _DEBUG</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>$(PSX_INCLUDES)</NMakeIncludeSearchPath>
+    <NMakeBuildCommandLine>%PSX_BUILDER% -b "$(MSBuildProjectFullPath)" "$(Configuration)" $(CrtSDKReferenceVersion)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>%PSX_BUILDER% -r "$(MSBuildProjectFullPath)" "$(Configuration)" $(CrtSDKReferenceVersion)</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>%PSX_BUILDER% -c "$(MSBuildProjectFullPath)" "$(Configuration)" $(CrtSDKReferenceVersion)</NMakeCleanCommandLine>
+    <OutDir>$(SolutionDir)$(Configuration)\bin\</OutDir>
+    <IntDir>$(SolutionDir)$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PAL-Release|Win32'">
+    <NMakeOutput>$(Configuration)\bin\ECLIPSE.exe</NMakeOutput>
+    <NMakePreprocessorDefinitions>_PAL</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>$(PSX_INCLUDES)</NMakeIncludeSearchPath>
+    <NMakeBuildCommandLine>%PSX_BUILDER% -b "$(MSBuildProjectFullPath)" "$(Configuration)" $(CrtSDKReferenceVersion)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>%PSX_BUILDER% -r "$(MSBuildProjectFullPath)" "$(Configuration)" $(CrtSDKReferenceVersion)</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>%PSX_BUILDER% -c "$(MSBuildProjectFullPath)" "$(Configuration)" $(CrtSDKReferenceVersion)</NMakeCleanCommandLine>
+    <OutDir>$(SolutionDir)$(Configuration)\bin\</OutDir>
+    <IntDir>$(SolutionDir)$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PAL-Debug|Win32'">
+    <NMakeOutput>$(Configuration)\bin\ECLIPSE.exe</NMakeOutput>
+    <NMakePreprocessorDefinitions>_PAL; _DEBUG</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>$(PSX_INCLUDES)</NMakeIncludeSearchPath>
+    <NMakeBuildCommandLine>%PSX_BUILDER% -b "$(MSBuildProjectFullPath)" "$(Configuration)" $(CrtSDKReferenceVersion)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>%PSX_BUILDER% -r "$(MSBuildProjectFullPath)" "$(Configuration)" $(CrtSDKReferenceVersion)</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>%PSX_BUILDER% -c "$(MSBuildProjectFullPath)" "$(Configuration)" $(CrtSDKReferenceVersion)</NMakeCleanCommandLine>
     <OutDir>$(SolutionDir)$(Configuration)\bin\</OutDir>
     <IntDir>$(SolutionDir)$(Configuration)\</IntDir>
   </PropertyGroup>

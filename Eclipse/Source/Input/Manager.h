@@ -8,7 +8,7 @@
 // Input Manager
 //////////////////////////////////////////////////////////
 typedef struct InputManager
-{
+{  
     ControllerDevice Devices[2];
     GamePad          GamePads[2];
 }
