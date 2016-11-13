@@ -42,7 +42,7 @@ int main()
 
         InputManagerUpdateGamePad(CDS_SLOT1);
         InputManagerUpdateGamePad(CDS_SLOT2);
-		        
+
         if (P1Button(GPB_L1 | GPB_R1, BS_WAS_PRESSED) > 0)
         {
             LoggerClear();

@@ -57,16 +57,19 @@ void LoggerEreaseLine(TimerHandler timer)
 
 void LoggerClear()
 {
+#ifdef _DEBUG
     int i;
 
     for (i = 0; i < LOGGER_LINES; i++)
     {
         LoggerClearLine(i);
     }
+#endif
 }
 
 void LoggerInit()
 {
+#ifdef _DEBUG
     GLogger.StreamID = FntOpen(0, 120, 320, 240, 0, 512);
     SetDumpFnt(GLogger.StreamID);
     GLogger.CurrentLine  = 0;
@@ -76,6 +79,7 @@ void LoggerInit()
     GLogger.EreaserTimer = AcquireTimer(SECONDS_TO_TICKS(LOGGER_EREASER_WAIT_TIME), 
                                         &LoggerEreaseLine, 
                                         TRM_ENDLESS);
+#endif
 }
 
 void LoggerRestartEreaser()
@@ -85,6 +89,7 @@ void LoggerRestartEreaser()
 
 void LoggerAppend(const char* text)
 {
+#ifdef _DEBUG
     int i      = 0;
     int cursor = 0;
 
@@ -102,10 +107,12 @@ void LoggerAppend(const char* text)
     }
     GLogger.CurrentLine = LoggerGetNextLine(GLogger.CurrentLine);
     LoggerRestartEreaser();    
+#endif
 }
 
 void LoggerFlush()
 {   
+#ifdef _DEBUG
     int i, line;
 
     line = GLogger.CurrentLine;
@@ -117,4 +124,5 @@ void LoggerFlush()
     }
 
     FntFlush(GLogger.StreamID);
+#endif
 }

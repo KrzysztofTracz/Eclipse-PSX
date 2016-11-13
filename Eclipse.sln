@@ -14,9 +14,13 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{7C821FA1-A6C4-46CD-B9F5-F654110C1F6F}.NTSC-Debug|PSX.ActiveCfg = NTSC-Debug|Win32
+		{7C821FA1-A6C4-46CD-B9F5-F654110C1F6F}.NTSC-Debug|PSX.Build.0 = NTSC-Debug|Win32
 		{7C821FA1-A6C4-46CD-B9F5-F654110C1F6F}.NTSC-Release|PSX.ActiveCfg = NTSC-Release|Win32
+		{7C821FA1-A6C4-46CD-B9F5-F654110C1F6F}.NTSC-Release|PSX.Build.0 = NTSC-Release|Win32
 		{7C821FA1-A6C4-46CD-B9F5-F654110C1F6F}.PAL-Debug|PSX.ActiveCfg = PAL-Debug|Win32
+		{7C821FA1-A6C4-46CD-B9F5-F654110C1F6F}.PAL-Debug|PSX.Build.0 = PAL-Debug|Win32
 		{7C821FA1-A6C4-46CD-B9F5-F654110C1F6F}.PAL-Release|PSX.ActiveCfg = PAL-Release|Win32
+		{7C821FA1-A6C4-46CD-B9F5-F654110C1F6F}.PAL-Release|PSX.Build.0 = PAL-Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

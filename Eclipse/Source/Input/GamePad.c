@@ -60,6 +60,7 @@ void GamePadClear(GamePad* gamePad)
 
 void GampadPrintState(GamePad* gamePad)
 {
+#ifdef _DEBUG
     FntPrint(gamePad->DebugStreamID, "P%d\n", gamePad->Slot + 1);
     if (gamePad->ConnectionStatus == GPCS_DISCONNECTED)
     {
@@ -70,6 +71,7 @@ void GampadPrintState(GamePad* gamePad)
         FntPrint(gamePad->DebugStreamID, "--\n");
         FOR_EACH_BUTTON(PRINT_PRESSED, gamePad);
     }    
+#endif
 }
 
 int GamePadCheckButtonState(GamePad* gamePad, GamePadButton button, ButtonState state)

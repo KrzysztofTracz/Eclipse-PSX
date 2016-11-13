@@ -27,4 +27,24 @@
   <PropertyGroup>
     <ShowAllFiles>true</ShowAllFiles>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PAL-Debug|Win32'">
+    <LocalDebuggerCommand>$(PSX_BUILDER)</LocalDebuggerCommand>
+    <LocalDebuggerCommandArguments>-e "$(TargetPath)"</LocalDebuggerCommandArguments>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PAL-Release|Win32'">
+    <LocalDebuggerCommand>$(PSX_BUILDER)</LocalDebuggerCommand>
+    <LocalDebuggerCommandArguments>-e "$(TargetPath)"</LocalDebuggerCommandArguments>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='NTSC-Debug|Win32'">
+    <LocalDebuggerCommand>$(PSX_BUILDER)</LocalDebuggerCommand>
+    <LocalDebuggerCommandArguments>-e "$(TargetPath)"</LocalDebuggerCommandArguments>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='NTSC-Release|Win32'">
+    <LocalDebuggerCommand>$(PSX_BUILDER)</LocalDebuggerCommand>
+    <LocalDebuggerCommandArguments>-e "$(TargetPath)"</LocalDebuggerCommandArguments>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
 </Project>
