@@ -1,96 +1,19 @@
-#include <stdlib.h>
-#include <libgte.h>
-#include <libgpu.h>
-#include <libgs.h>
-
-#include "Logger.h"
-#include "Input.h"
-#include "Timer.h"
-
-#define OT_LENGTH 1 // the ordertable length
-#define PACKETMAX 18 // the maximum number of objects on the screen
-#define SCREEN_WIDTH  320 // screen width
-#define	SCREEN_HEIGHT 240 // screen height
-
-GsOT myOT[2];
-GsOT_TAG myOT_TAG[2][1 << OT_LENGTH];
-PACKET GPUPacketArea[2][PACKETMAX];
+#include "Engine.h"
 
 u_long __ramsize   = 0x00200000; // force 2 megabytes of RAM
 u_long __stacksize = 0x00004000; // force 16 kilobytes of stack
 
-short CurrentBuffer = 0;
-
-// ----------
-// PROTOTYPES
-// ----------
-void graphics();
-void display();
+void Update()
+{
+    if (P1Button(GPB_L1 | GPB_R1, BS_WAS_PRESSED) > 0)
+    {
+        LoggerClear();
+    }
+}
 
 int main()
 {
-	graphics(); // setup the graphics (seen below)
-	FntLoad(960, 256); // load the font from the BIOS into VRAM/SGRAM
-
-    TimerManagerInit();
-    LoggerInit();
-    InputManagerInit();
-
-	while (1)
-	{        
-        TimerManagerTick();
-
-        InputManagerUpdateGamePad(CDS_SLOT1);
-        InputManagerUpdateGamePad(CDS_SLOT2);
-
-        if (P1Button(GPB_L1 | GPB_R1, BS_WAS_PRESSED) > 0)
-        {
-            LoggerClear();
-        }
-
-        display();
-	}
-
-	return 0;
+    EngineInit(Update);
+    return EngineStart();
 }
 
-void graphics()
-{
-    // within the BIOS, if the address 0xBFC7FF52 equals 'E', 
-    // set it as PAL (1). Otherwise, set it as NTSC (0)
-
-    SetVideoMode(*(char *)0xbfc7ff52 == 'E' ? 1 : 0);
-
-	GsInitGraph(SCREEN_WIDTH, 
-                SCREEN_HEIGHT, 
-                GsNONINTER | GsOFSGPU, 
-                1, 0);
-
-    // set the top left coordinates of the two buffers in video memory
-	GsDefDispBuff(0, 0, 0, SCREEN_HEIGHT); 
-    	                                          
-    // init the ordering tables
-	myOT[0].length = OT_LENGTH;
-	myOT[1].length = OT_LENGTH;
-	myOT[0].org = myOT_TAG[0];
-	myOT[1].org = myOT_TAG[1];
-
-	GsClearOt(0, 0, &myOT[0]);
-	GsClearOt(0, 0, &myOT[1]);
-}
-
-
-void display()
-{
-    LoggerFlush();
-    InputManagerFlushDebugStreams();
-
-	CurrentBuffer = GsGetActiveBuff(); // get the current buffer
-	GsSetWorkBase((PACKET*)GPUPacketArea[CurrentBuffer]); // setup the packet workbase
-	GsClearOt(0, 0, &myOT[CurrentBuffer]); // clear the ordering table
-	DrawSync(0); // wait for all drawing to finish
-	VSync(0); // wait for v_blank interrupt
-	GsSwapDispBuff(); // flip the double buffers
-	GsSortClear(50, 50, 50, &myOT[CurrentBuffer]); // clear the ordering table with a background color. RGB value 50,50,50 which is a grey background (0,0,0 would be black for example)
-	GsDrawOt(&myOT[CurrentBuffer]); // Draw the ordering table for the CurrentBuffer
-}

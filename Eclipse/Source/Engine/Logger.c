@@ -70,7 +70,9 @@ void LoggerClear()
 void LoggerInit()
 {
 #ifdef _DEBUG
-    GLogger.StreamID = FntOpen(0, 120, 320, 240, 0, 512);
+    FntLoad(960, 256);
+
+    GLogger.StreamID = FntOpen(0, 120, 320, 120, 0, 512);
     SetDumpFnt(GLogger.StreamID);
     GLogger.CurrentLine  = 0;
 

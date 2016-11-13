@@ -94,20 +94,27 @@
   <ItemDefinitionGroup>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Input\Device.c" />
-    <ClCompile Include="Source\Input\GamePad.c" />
-    <ClCompile Include="Source\Input\Manager.c" />
-    <ClCompile Include="Source\Logger.c" />
+    <ClCompile Include="Source\Engine.c" />
+    <ClCompile Include="Source\Engine\Graphics\Frame.c" />
+    <ClCompile Include="Source\Engine\Graphics\Manager.c" />
+    <ClCompile Include="Source\Engine\Input\Device.c" />
+    <ClCompile Include="Source\Engine\Input\GamePad.c" />
+    <ClCompile Include="Source\Engine\Input\Manager.c" />
+    <ClCompile Include="Source\Engine\Logger.c" />
     <ClCompile Include="Source\Main.c" />
-    <ClCompile Include="Source\Timer.c" />
+    <ClCompile Include="Source\Engine\Timer.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Input.h" />
-    <ClInclude Include="Source\Input\Device.h" />
-    <ClInclude Include="Source\Input\GamePad.h" />
-    <ClInclude Include="Source\Input\Manager.h" />
-    <ClInclude Include="Source\Logger.h" />
-    <ClInclude Include="Source\Timer.h" />
+    <ClInclude Include="Source\Engine.h" />
+    <ClInclude Include="Source\Engine\Graphics.h" />
+    <ClInclude Include="Source\Engine\Graphics\Frame.h" />
+    <ClInclude Include="Source\Engine\Graphics\Manager.h" />
+    <ClInclude Include="Source\Engine\Input.h" />
+    <ClInclude Include="Source\Engine\Input\Device.h" />
+    <ClInclude Include="Source\Engine\Input\GamePad.h" />
+    <ClInclude Include="Source\Engine\Input\Manager.h" />
+    <ClInclude Include="Source\Engine\Logger.h" />
+    <ClInclude Include="Source\Engine\Timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

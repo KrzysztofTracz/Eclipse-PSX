@@ -12,6 +12,7 @@ InputManager GInputManager;
 
 void InputManagerInitDebugStreams()
 {
+#ifdef _DEBUG
     GInputManager.GamePads[CDS_SLOT1].DebugStreamID = FntOpen(DEBUG_STREAM_AREA_X,
                                                               DEBUG_STREAM_AREA_Y,
                                                               DEBUG_STREAM_AREA_WIDTH,
@@ -29,6 +30,7 @@ void InputManagerInitDebugStreams()
                                                               DEBUG_STREAM_CHARS_LIMIT);
 
     SetDumpFnt(GInputManager.GamePads[CDS_SLOT2].DebugStreamID);
+#endif
 }
 
 void InputManagerInit()
@@ -49,8 +51,10 @@ void InputManagerInit()
 
 void InputManagerFlushDebugStreams()
 {
+#ifdef _DEBUG
     FntFlush(GInputManager.GamePads[CDS_SLOT1].DebugStreamID);
     FntFlush(GInputManager.GamePads[CDS_SLOT2].DebugStreamID);
+#endif
 }
 
 GamePadConnectionStatus InputManagerUpdateGamePad(ControllerDeviceSlot slot)

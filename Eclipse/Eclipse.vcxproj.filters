@@ -18,39 +18,60 @@
     <ClCompile Include="Source\Main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Input\Device.c">
+    <ClCompile Include="Source\Engine\Input\Device.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Input\Manager.c">
+    <ClCompile Include="Source\Engine\Input\GamePad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Input\GamePad.c">
+    <ClCompile Include="Source\Engine\Input\Manager.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Logger.c">
+    <ClCompile Include="Source\Engine\Logger.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Timer.c">
+    <ClCompile Include="Source\Engine\Timer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Graphics\Manager.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Graphics\Frame.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Input.h">
+    <ClInclude Include="Source\Engine\Input\Device.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Input\Device.h">
+    <ClInclude Include="Source\Engine\Input\GamePad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Input\Manager.h">
+    <ClInclude Include="Source\Engine\Input\Manager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Input\GamePad.h">
+    <ClInclude Include="Source\Engine\Graphics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Logger.h">
+    <ClInclude Include="Source\Engine\Input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Timer.h">
+    <ClInclude Include="Source\Engine\Logger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Graphics\Manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Graphics\Frame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
