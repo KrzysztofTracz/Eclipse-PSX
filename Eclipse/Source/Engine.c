@@ -23,12 +23,13 @@ int EngineStart()
 
         UpdateCallback();
 
-        GraphicsManagerDraw();
+        //GraphicsManagerDraw();
 
         LoggerFlush();
         InputManagerFlushDebugStreams();
 
         GraphicsManagerSwap(255, 0, 255);
+        
     }
 
     return 0;

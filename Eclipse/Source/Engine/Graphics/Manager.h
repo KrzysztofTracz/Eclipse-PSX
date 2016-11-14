@@ -42,6 +42,9 @@ void GraphicsManagerSwap(char r, char g, char b);
            void GraphicsManagerSetCurrentFrameBuffer(char index);
 GraphicsFrame*  GraphicsManagerGetCurrentFrameBuffer();
 
+unsigned int GraphicsManagerGetDrawBufferX();
+unsigned int GraphicsManagerGetDrawBufferY();
+
 //////////////////////////////////////////////////////////
 
 extern GraphicsManager GGraphicsManager;

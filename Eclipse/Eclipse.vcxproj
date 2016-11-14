@@ -96,6 +96,7 @@
   <ItemGroup>
     <ClCompile Include="Source\Engine.c" />
     <ClCompile Include="Source\Engine\Graphics\Frame.c" />
+    <ClCompile Include="Source\Engine\Graphics\Image.c" />
     <ClCompile Include="Source\Engine\Graphics\Manager.c" />
     <ClCompile Include="Source\Engine\Input\Device.c" />
     <ClCompile Include="Source\Engine\Input\GamePad.c" />
@@ -107,7 +108,9 @@
   <ItemGroup>
     <ClInclude Include="Source\Engine.h" />
     <ClInclude Include="Source\Engine\Graphics.h" />
+    <ClInclude Include="Source\Engine\Graphics\Color.h" />
     <ClInclude Include="Source\Engine\Graphics\Frame.h" />
+    <ClInclude Include="Source\Engine\Graphics\Image.h" />
     <ClInclude Include="Source\Engine\Graphics\Manager.h" />
     <ClInclude Include="Source\Engine\Input.h" />
     <ClInclude Include="Source\Engine\Input\Device.h" />
@@ -115,6 +118,7 @@
     <ClInclude Include="Source\Engine\Input\Manager.h" />
     <ClInclude Include="Source\Engine\Logger.h" />
     <ClInclude Include="Source\Engine\Timer.h" />
+    <ClInclude Include="Source\Title.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

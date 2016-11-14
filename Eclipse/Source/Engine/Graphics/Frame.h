@@ -6,7 +6,7 @@
 #include <libgpu.h>
 #include <libgs.h>
 
-#define ORDERING_TABLE_LENGTH 1
+#define ORDERING_TABLE_LENGTH 16
 #define PACKET_MAX 18
 
 //////////////////////////////////////////////////////////
