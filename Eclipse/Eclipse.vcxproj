@@ -95,6 +95,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Engine.c" />
+    <ClCompile Include="Source\Engine\Graphics\Color.c" />
     <ClCompile Include="Source\Engine\Graphics\Frame.c" />
     <ClCompile Include="Source\Engine\Graphics\Image.c" />
     <ClCompile Include="Source\Engine\Graphics\Manager.c" />

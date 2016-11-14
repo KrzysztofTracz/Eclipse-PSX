@@ -21,15 +21,13 @@ int EngineStart()
         InputManagerUpdateGamePad(CDS_SLOT1);
         InputManagerUpdateGamePad(CDS_SLOT2);
 
-        UpdateCallback();
-
-        //GraphicsManagerDraw();
+        UpdateCallback();  
 
         LoggerFlush();
         InputManagerFlushDebugStreams();
 
         GraphicsManagerSwap(255, 0, 255);
-        
+		GraphicsManagerDraw();
     }
 
     return 0;

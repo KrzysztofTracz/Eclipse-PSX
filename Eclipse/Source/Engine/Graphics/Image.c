@@ -18,7 +18,7 @@ Image16* Image16Create(unsigned int width, unsigned int height)
     image->VRAMPosition.h = height;
 
     image->BufferSize = width * height;
-    image->Buffer = (Color16*)malloc(image->BufferSize * sizeof(Color16));
+    image->Buffer = (unsigned short*)malloc(image->BufferSize * sizeof(unsigned short));
 
     return image;
 }
@@ -34,12 +34,12 @@ unsigned int IImage16GetIndex(Image16* image, unsigned int x, unsigned int y)
     return x + (y * image->Height);
 }
 
-Color16 Image16GetPixel(Image16* image, unsigned int x, unsigned int y)
+unsigned short Image16GetPixel(Image16* image, unsigned int x, unsigned int y)
 {
     return image->Buffer[IImage16GetIndex(image, x, y)];
 }
 
-void Image16SetPixel(Image16* image, unsigned int x, unsigned int y, Color16 color)
+void Image16SetPixel(Image16* image, unsigned int x, unsigned int y, unsigned short color)
 {
     image->Buffer[IImage16GetIndex(image, x, y)] = color;
 }

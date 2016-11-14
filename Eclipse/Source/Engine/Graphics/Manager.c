@@ -9,7 +9,7 @@ void GraphicsManagerInit()
     GsInitGraph(SCREEN_WIDTH,
                 SCREEN_HEIGHT,
                 GsNONINTER | GsOFSGPU,
-                1, 1);
+                1, 0);
 
     GsDefDispBuff(0, 0, 0, SCREEN_HEIGHT);
 
@@ -31,8 +31,8 @@ void GraphicsManagerSwap(char r, char g, char b)
 
     GsSwapDispBuff(); 
     GraphicsManagerSetCurrentFrameBuffer(GsGetActiveBuff());    
-    //GraphicsFrameClearColor(GraphicsManagerGetCurrentFrameBuffer(), 
-    //                        r * GGraphicsManager.CurrentFrameBuffer, g, b);
+    GraphicsFrameClearColor(GraphicsManagerGetCurrentFrameBuffer(), 
+                            r * GGraphicsManager.CurrentFrameBuffer, g, b);
 }
 
 void GraphicsManagerSetCurrentFrameBuffer(char index)
@@ -53,5 +53,5 @@ unsigned int GraphicsManagerGetDrawBufferX()
 
 unsigned int GraphicsManagerGetDrawBufferY()
 {
-    return SCREEN_HEIGHT * (GGraphicsManager.CurrentFrameBuffer == 1 ? 0 : 1);
+    return SCREEN_HEIGHT * GGraphicsManager.CurrentFrameBuffer;
 }

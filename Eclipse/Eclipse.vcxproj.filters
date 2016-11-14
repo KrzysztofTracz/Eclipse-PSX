@@ -45,6 +45,9 @@
     <ClCompile Include="Source\Engine\Graphics\Image.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Engine\Graphics\Color.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Engine\Input\Device.h">

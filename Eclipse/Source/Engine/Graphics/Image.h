@@ -14,7 +14,7 @@
 //////////////////////////////////////////////////////////
 typedef struct Image16
 {
-    Color16* Buffer;
+    unsigned short* Buffer;
     unsigned int BufferSize;
     RECT VRAMPosition;
     unsigned int Width;
@@ -25,8 +25,8 @@ Image16;
 Image16* Image16Create(unsigned int width, unsigned int height);
     void Image16Destroy(Image16* image);
 
-Color16 Image16GetPixel(Image16* image, unsigned int x, unsigned int y);
-   void Image16SetPixel(Image16* image, unsigned int x, unsigned int y, Color16 color);
+unsigned short Image16GetPixel(Image16* image, unsigned int x, unsigned int y);
+   void Image16SetPixel(Image16* image, unsigned int x, unsigned int y, unsigned short color);
    void Image16Flush(Image16* image);
 
 void Image16Draw(Image16* image, unsigned int x, unsigned int y);
